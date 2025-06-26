@@ -1,69 +1,157 @@
-# React + TypeScript + Vite
+# Video Frame Extraction & Similarity Search - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript web application for extracting frames from videos and finding similar frames using AI-powered vector similarity search.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Video Upload**: Drag & drop or click to upload video files (MP4, AVI, MOV)
+- **Frame Extraction**: Automatically extract frames from uploaded videos at specified intervals
+- **Frame Display**: View all extracted frames in an organized grid layout
+- **Similarity Search**: Find visually similar frames using AI-powered vector search
+- **Real-time Processing**: Live status updates during video processing
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Persistent State**: Remembers your work across browser sessions
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: CSS3 with modern features (Grid, Flexbox, Backdrop Filter)
+- **HTTP Client**: Axios for API communication
+- **File Upload**: React Dropzone for drag & drop functionality
+- **Linting**: ESLint with TypeScript support
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd frontend
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_API_URL=https://your-backend-url.com/api
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+## 🚦 Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build the application for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint to check code quality
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/
+│   ├── VideoUpload.tsx      # Video upload component with drag & drop
+│   ├── FrameDisplay.tsx     # Grid display of extracted frames
+│   └── SimilaritySearch.tsx # Similarity search interface
+├── api/
+│   └── videoApi.ts          # API client and type definitions
+├── App.tsx                  # Main application component
+├── App.css                  # Application styles
+├── main.tsx                 # Application entry point
+└── vite-env.d.ts           # Vite type definitions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔧 Configuration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Environment Variables
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `VITE_API_URL` - Backend API base URL (required)
+
+### Supported Video Formats
+
+- MP4 (.mp4)
+- AVI (.avi)
+- MOV (.mov)
+- QuickTime (.quicktime)
+
+## 🎯 Usage
+
+1. **Upload a Video**: Drag and drop a video file or click to browse
+2. **Extract Frames**: Click "Extract Frames" to process the video
+3. **View Frames**: Browse the extracted frames in the grid
+4. **Search Similar**: Click on any frame and use "Find Similar Frames" to discover visually similar content
+5. **Analyze Results**: View similarity scores and navigate through results
+
+## 🌟 Key Features Explained
+
+### Frame Extraction
+- Extracts frames at 1-second intervals by default
+- Generates thumbnails for quick preview
+- Computes AI features for similarity search
+
+### Similarity Search
+- Uses vector similarity algorithms
+- Provides percentage-based similarity scores
+- Configurable number of results (1-50)
+- Real-time visual feedback
+
+### Responsive Design
+- Mobile-first approach
+- Optimized for touch interactions
+- Adaptive grid layouts
+- Smooth animations and transitions
+
+## 🔌 API Integration
+
+The frontend communicates with a backend API that provides:
+
+- Video upload and processing
+- Frame extraction with FFmpeg
+- AI-powered feature computation
+- Vector similarity search
+- Static file serving for frame images
+
+## 🎨 UI/UX Features
+
+- **Modern Glass-morphism Design**: Translucent backgrounds with blur effects
+- **Gradient Themes**: Beautiful color gradients throughout the interface
+- **Loading States**: Clear visual feedback during processing
+- **Error Handling**: User-friendly error messages and recovery options
+- **Progress Indicators**: Real-time upload and processing progress
+- **Accessibility**: Proper ARIA labels and keyboard navigation
+
+## 🚀 Deployment
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy the `dist` folder** to your hosting platform (Vercel, Netlify, etc.)
+
+3. **Configure environment variables** in your hosting platform
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Built with React and TypeScript
+- Powered by Vite for fast development
+- Uses modern web technologies for optimal performance
