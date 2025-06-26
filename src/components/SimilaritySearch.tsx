@@ -39,7 +39,8 @@ const SimilaritySearch: React.FC<SimilaritySearchProps> = ({
   };
 
   const getFrameUrl = (frame: FrameData): string => {
-    return `http://localhost:3001/frames/${frame.videoId}/${frame.filename}`;
+    const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:3001';
+    return `${baseUrl}/frames/${frame.videoId}/${frame.filename}`;
   };
 
   const formatScore = (score: number): string => {

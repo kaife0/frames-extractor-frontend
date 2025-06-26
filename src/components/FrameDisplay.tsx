@@ -25,7 +25,7 @@ const FrameDisplay: React.FC<FrameDisplayProps> = ({
   const getFrameUrl = (frame: FrameData): string => {
     // Construct URL for frame image from backend static serving
     // The backend serves static files from /frames endpoint
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:3001';
     return `${baseUrl}/frames/${frame.videoId}/${frame.filename}`;
   };
 
